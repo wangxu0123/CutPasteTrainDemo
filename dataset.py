@@ -35,7 +35,7 @@ class MVTecAT(Dataset):
         
         # find test images
         if self.mode == "train":
-            self.image_names = list((self.root_dir / defect_name / "train" / "good").glob("*.png"))
+            self.image_names = list((self.root_dir / defect_name / "train" / "good").glob("*.jpg"))
             print("loading images")
             # during training we cache the smaller images for performance reasons (not a good coding style)
             self.imgs = [Image.open(file).resize((size,size)).convert("RGB") for file in self.image_names]
@@ -43,7 +43,7 @@ class MVTecAT(Dataset):
             print(f"loaded {len(self.imgs)} images")
         else:
             #test mode
-            self.image_names = list((self.root_dir / defect_name / "test").glob(str(Path("*") / "*.png")))
+            self.image_names = list((self.root_dir / defect_name / "test").glob(str(Path("*") / "*.jpg")))
             
     def __len__(self):
         return len(self.image_names)
