@@ -115,7 +115,7 @@ def run_training(data_type="screw",
         optimizer.zero_grad()
 
         xc = torch.cat(xs, axis=0)
-        embeds, logits = model(xc)
+        embeds, logits, temp_conv = model(xc)
 
         #         embeds = F.normalize(embeds, p=2, dim=1)
         #         embeds1, embeds2 = torch.split(embeds,x1.size(0),dim=0)
